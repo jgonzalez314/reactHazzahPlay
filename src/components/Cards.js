@@ -2,7 +2,22 @@ import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
 
-function Cards() {
+const Cards = () => {
+  const cardinfo = [
+    {text:'1',path:'dash/111'},
+    {text:'2',path:'session/222'},
+    {text:'3',path:'studentsession/333'},
+    {text:'4',path:'4'},
+  ];
+
+  const renderCard = (card,index) =>{
+    return(
+      <CardItem
+              text={card.text}
+              path={card.path}
+              key ={index}/>
+    );
+  }
 
   return (
 
@@ -11,26 +26,7 @@ function Cards() {
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
-            <CardItem
-              text='one'
-              path='/services'/>
-            <CardItem
-              text='two'
-              path='/services'/>
-
-
-            <CardItem
-              text='three'
-              path='/services'
-            />
-            <CardItem
-              text='four'
-              path='/products'
-            />
-            <CardItem
-              text='five'
-              path='/sign-up'
-            />
+            {cardinfo.map(renderCard)}
           </ul>
         </div>
       </div>
