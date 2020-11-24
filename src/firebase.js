@@ -40,7 +40,7 @@ const getUserDocument = async uid => {
   if (!uid) return null;
   try {
     const userDocument = await firestore.doc(`users/${uid}`).get();
-
+    console.log(userDocument);
     return {
       uid,
       ...userDocument.data()

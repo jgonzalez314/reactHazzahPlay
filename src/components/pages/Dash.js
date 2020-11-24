@@ -8,8 +8,8 @@ import Cards from '../Cards';
 
 
 
+
 function Dash({match}) {
-    console.log(match);
     const {getCurrentUser} = useAuth();
     const name = getCurrentUser
     console.log(getCurrentUser);

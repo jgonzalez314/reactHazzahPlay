@@ -9,6 +9,8 @@ import Register from './components/pages/Register';
 import Dash from './components/pages/Dash';
 import Session from './components/pages/Session';
 import STSession from './components/pages/STSession';
+import Create from './components/pages/Create';
+
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path='/dash/:id'exact component={Dash} />
           <Route path='/session/:id' exact component={Session} />
           <Route path='/studentsession/:id' exact component={STSession} />
+          <Route path='/create' exact component={Create} />
+
         </Switch>
       </Router>
     </AuthProvider>

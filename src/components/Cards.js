@@ -18,6 +18,9 @@ const Cards = () => {
               key ={index}/>
     );
   }
+  const show = () =>{
+
+  }
 
   return (
 
@@ -28,9 +31,13 @@ const Cards = () => {
           <ul className='cards__items'>
             {cardinfo.map(renderCard)}
           </ul>
+
         </div>
       </div>
     </div>
+
+
+
   );
 }
 

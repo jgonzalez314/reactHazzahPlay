@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { useAuth } from "../contexts/AuthContext";
 
-function Dashbar() {
+function STNav() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const { logout } = useAuth()
   // this is the userid
   const id = 222;
-
+  const sessionid = 123;
+  const stsessionid = 232124;
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -50,11 +51,19 @@ function Dashbar() {
                 Dash
               </Link>
             </li>
+
             <li className='nav-item'>
-              <Link to='/create' className='nav-links' onClick={closeMobileMenu}>
-                Create New Session
+              <Link to='/session/{sessionid}' className='nav-links' onClick={closeMobileMenu}>
+                Session
               </Link>
             </li>
+
+            <li className='nav-item'>
+              <Link to='/studentsession/{stsessionid}' className='nav-links' onClick={closeMobileMenu}>
+                Student Session
+              </Link>
+            </li>
+
             <li className='nav-item'>
               <Link to='/' className='nav-links' onClick={closeMobileMenuSignOut}>
                 Sign out
@@ -69,4 +78,4 @@ function Dashbar() {
   );
 }
 
-export default Dashbar;
+export default STNav;
