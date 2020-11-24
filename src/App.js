@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
+import { AuthProvider, useAuth } from "./contexts/AuthContext"
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignIn from './components/pages/SignIn';
@@ -13,6 +14,7 @@ import STSession from './components/pages/STSession';
 function App() {
   return (
     <>
+    <AuthProvider>
       <Router>
         <Navbar />
         <Switch>
@@ -24,6 +26,8 @@ function App() {
           <Route path='/studentsession/:id' component={STSession} />
         </Switch>
       </Router>
+    </AuthProvider>
+      
     </>
   );
 }
