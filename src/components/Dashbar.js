@@ -2,13 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { useAuth } from "../contexts/AuthContext";
 
-function Navbar() {
+function Dashbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const { logout } = useAuth()
+  // this is the userid
+  const id = 222;
+
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const closeMobileMenuSignOut = () => {
+    setClick(false)
+    logout()
+    };
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -37,25 +46,22 @@ function Navbar() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
+              <Link to='/dash/{id}' className='nav-links' onClick={closeMobileMenu}>
+                Dash
               </Link>
             </li>
-            <li>
-              <Link
-                to='/sign-In'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign In
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenuSignOut}>
+                Sign out
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='btn--outline' href='/sign-In'>Sign In</Button>}
+
+
         </div>
       </nav>
     </>
   );
 }
 
-export default Navbar;
+export default Dashbar;

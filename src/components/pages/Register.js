@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react"
 import '../../App.css';
-import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "../../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { Form, Button, Card, Alert } from "react-bootstrap";
+import { useAuth } from "../../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
+import Navbar from '../Navbar';
 
 export default function Signup() {
   const emailRef = useRef()
@@ -24,7 +25,7 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history.push("/dash")
     } catch {
       setError("Failed to create an account")
     }
@@ -34,6 +35,7 @@ export default function Signup() {
 
   return (
     <>
+      <Navbar/>
       <h1 class="text-center mb-4" style={{color:"#1A535C"}}>HuzzahPlay</h1>
       <Card style={{color: "#1A535C", borderColor:"#1A535C"}}>
         <Card.Body>

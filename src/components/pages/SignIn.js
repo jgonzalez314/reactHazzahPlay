@@ -4,6 +4,7 @@ import HeroSection from '../HeroSection';
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import Navbar from '../Navbar';
 
 export default function SignIn() {
     const emailRef = useRef()
@@ -20,7 +21,7 @@ export default function SignIn() {
         setError("")
         setLoading(true)
         await login(emailRef.current.value, passwordRef.current.value)
-        history.push("/")
+        history.push("/dash/hello")
         } catch {
         setError("Failed to log in")
         }
@@ -30,6 +31,7 @@ export default function SignIn() {
 
     return (
         <>
+        <Navbar/>
         <Container className="d-flex align-items-center justify-content-center" >
             <div className="w-100" style={{ maxWidth: "400px" }}>
             <Card className="text-center" style={{color: "#1A535C", borderColor:"#1A535C"}}>
@@ -50,16 +52,17 @@ export default function SignIn() {
                     </Button>
                 </Form>
                 <div className="w-100 text-center mt-3">
-                    <Link to="/forgot-password" style={{color: "white"}}>Forgot Password?</Link>
+                    <Link to="/forgot-password" style={{color: "black"}}>Forgot Password?</Link>
+                </div>
+                <div className="w-100 text-center mt-2" style={{color: "white"}}>
+                Need an account? <Link to="/register" style={{color: "black", fontWeight: "bold"}}>Sign Up</Link>
                 </div>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2" style={{color: "white"}}>
-                Need an account? <Link to="/signup" style={{color: "white", fontWeight: "bold"}}>Sign Up</Link>
-            </div>
+
         </div>
         </Container>
-        
+
         </>
     )
 }

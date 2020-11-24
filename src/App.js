@@ -16,18 +16,18 @@ function App() {
     <>
     <AuthProvider>
       <Router>
-        <Navbar />
+
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/sign-up' component={SignIn} />
-          <Route path='/register' component={Register} />
-          <Route path='/dash/:id' component={Dash} />
-          <Route path='/session/:id' component={Session} />
-          <Route path='/studentsession/:id' component={STSession} />
+          <Route path='/sign-In' exact component={SignIn} />
+          <Route path='/register' exact component={Register} />
+          <Route path='/dash/:id'exact component={Dash} />
+          <Route path='/session/:id' exact component={Session} />
+          <Route path='/studentsession/:id' exact component={STSession} />
         </Switch>
       </Router>
     </AuthProvider>
-      
+
     </>
   );
 }

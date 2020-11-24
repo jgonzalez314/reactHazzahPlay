@@ -2,12 +2,12 @@ import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
 
-const Cards = () => {
+const Sessioncards = () => {
   const cardinfo = [
-    {text:'session 1',path:'/'},
-    {text:'session 2',path:'/session/222'},
-    {text:'session 3',path:'/session/333'},
-    {text:'session 4',path:'/session/444'},
+    {text:'session 1',path:'/studentsession/222'},
+    {text:'session 2',path:'/studentsession/222'},
+    {text:'session 3',path:'/studentsession/222'},
+    {text:'session 4',path:'/studentsession/222'},
   ];
 
   const renderCard = (card,index) =>{
@@ -34,4 +34,4 @@ const Cards = () => {
   );
 }
 
-export default Cards;
+export default Sessioncards;
