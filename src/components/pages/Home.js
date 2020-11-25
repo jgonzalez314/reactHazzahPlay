@@ -8,7 +8,7 @@ import Navbar from '../Navbar';
 function Home() {
   return (
     <>
-        <Navbar/>
+        {/* <Navbar/> */}
       <HeroSection text="Welcome"/>
 
       <h1>home</h1>

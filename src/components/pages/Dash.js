@@ -4,10 +4,7 @@ import HeroSection from '../HeroSection';
 import Dashbar from '../Dashbar';
 import { useAuth } from "../../contexts/AuthContext";
 import Cards from '../Cards';
-
-
-
-
+import NavBar from '../Navbar'
 
 function Dash({match}) {
     const {getCurrentUser} = useAuth();
@@ -17,10 +14,9 @@ function Dash({match}) {
 
   return (
     <>
-        <Dashbar/>
+        {/* <NavBar /> */}
         <HeroSection style="background-image=learning.jpg"text="Welcome"/>
-        <h1>Dash {name}</h1>
-        <Cards/>
+        <Cards />
     </>
   );
 }

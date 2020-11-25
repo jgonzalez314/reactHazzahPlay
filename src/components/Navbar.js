@@ -1,61 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from './Button';
+// import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { Navbar, Nav, Button } from 'react-bootstrap';
+import { useAuth } from '../contexts/AuthContext';
 
-function Navbar() {
-  const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
+export default function NavBar() {
 
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
+  const { currentUser, logout } = useAuth();
+  const signout = () => {
+    logout()
   };
 
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener('resize', showButton);
-
+  const navbar = {backgroundColor: '#1A535C'}
   return (
     <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            HuzzahPlay
-
-          </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to='/sign-In'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign In
-              </Link>
-            </li>
-          </ul>
-          {button && <Button buttonStyle='btn--outline' href='/sign-In'>Sign In</Button>}
-        </div>
-      </nav>
+    <Navbar style={navbar} expand="lg">
+      <Navbar.Brand style={{ color: "white"}} href={!currentUser ? "/" : "/dash"}> HuzzahPlay </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+        {!currentUser ? 
+        <Button href="/sign-in" style={{backgroundColor: "#FF6B6B", borderColor: "transparent"}} > Sign In </Button>
+        :
+        <>
+        <Nav className="mr-auto">
+          <Nav.Link style={{color: "white"}} href="/dash">Dashboard</Nav.Link>
+        </Nav>
+        <Button style={{backgroundColor: "#FF6B6B", borderColor: "transparent"}} onClick={signout} > Sign Out </Button>
+        </>
+        }
+      </Navbar.Collapse>
+    </Navbar>
     </>
   );
 }
-
-export default Navbar;

@@ -10,6 +10,7 @@ import Dash from './components/pages/Dash';
 import Session from './components/pages/Session';
 import STSession from './components/pages/STSession';
 import Create from './components/pages/Create';
+import PrivateRoute from "./components/PrivateRoute"
 
 
 
@@ -18,17 +19,17 @@ function App() {
     <>
     <AuthProvider>
       <Router>
-
+      <Navbar />
         <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/sign-In' exact component={SignIn} />
-          <Route path='/register' exact component={Register} />
-          <Route path='/dash/:id'exact component={Dash} />
-          <Route path='/session/:id' exact component={Session} />
-          <Route path='/studentsession/:id' exact component={STSession} />
-          <Route path='/create' exact component={Create} />
-
-        </Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/sign-In' exact component={SignIn} />
+            <Route path='/register' exact component={Register} />
+            <PrivateRoute path='/dash/:id'exact component={Dash} />
+            <PrivateRoute path='/dash'exact component={Dash} />
+            <PrivateRoute path='/session/:id' exact component={Session} />
+            <PrivateRoute path='/studentsession/:id' exact component={STSession} />
+            <PrivateRoute path='/create' exact component={Create} />
+          </Switch>
       </Router>
     </AuthProvider>
 

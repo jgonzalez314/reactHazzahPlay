@@ -7,7 +7,7 @@ import STNav from '../STNav';
 function STSession({match}) {
   return (
     <>
-        <STNav/>
+        {/* <STNav/> */}
         <HeroSection style="background-image=learning.jpg"text="Welcome"/>
         <h1>STSession {match.params.id}</h1>
     </>

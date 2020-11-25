@@ -9,7 +9,7 @@ function Session({match}) {
     console.log(useRef)
   return (
     <>
-        <SessionNav/>
+        {/* <SessionNav/> */}
         <HeroSection text="Session Name"/>
         <h1>Session {match.params.id}</h1>
         <Sessioncards/>
