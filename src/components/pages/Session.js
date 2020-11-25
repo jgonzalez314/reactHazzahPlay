@@ -100,15 +100,14 @@ export default function Session() {
     async function handleCreate(e) {
         e.preventDefault()
 
-        const randomlist = shuffle(studentList)
-
         try {
             setError("")
             setLoading(true)
+            const randomlist = shuffle(studentList)
             await startSession(sessionsList.length, nameRef.current.value, sentenceRef.current.value, randomlist)
             handleClose()
         } catch {
-            setError("Failed to start a session")
+            setAddError("Failed to start a session")
         }
 
         setLoading(false)
