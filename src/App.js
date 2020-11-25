@@ -9,8 +9,9 @@ import Register from './components/pages/Register';
 import Dash from './components/pages/Dash';
 import Session from './components/pages/Session';
 import STSession from './components/pages/STSession';
-import Create from './components/pages/Create';
+// import AddStudent from './components/pages/AddStudent';
 import PrivateRoute from "./components/PrivateRoute"
+import Students from "./components/pages/Students"
 
 
 
@@ -22,13 +23,14 @@ function App() {
       <Navbar />
         <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/sign-In' exact component={SignIn} />
+            <Route path='/sign-in' exact component={SignIn} />
             <Route path='/register' exact component={Register} />
             <PrivateRoute path='/dash/:id'exact component={Dash} />
             <PrivateRoute path='/dash'exact component={Dash} />
+            <PrivateRoute path='/students'exact component={Students} />
             <PrivateRoute path='/session/:id' exact component={Session} />
             <PrivateRoute path='/studentsession/:id' exact component={STSession} />
-            <PrivateRoute path='/create' exact component={Create} />
+            {/* <PrivateRoute path='/AddStudent' exact component={AddStudent} /> */}
           </Switch>
       </Router>
     </AuthProvider>

@@ -1,10 +1,8 @@
 import React, { useRef, useState } from "react"
 import '../../App.css';
-import HeroSection from '../HeroSection';
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import NavBar from '../Navbar';
 
 export default function SignIn() {
     const emailRef = useRef()

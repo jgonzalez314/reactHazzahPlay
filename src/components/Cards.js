@@ -4,8 +4,8 @@ import CardItem from './CardItem';
 
 const Cards = () => {
   const cardinfo = [
-    {text:'session 1',path:'/'},
-    {text:'session 2',path:'/session/222'},
+    {text:'Session 1',path:'/session/111'},
+    {text:'Session 2',path:'/session/222'},
     {text:'session 3',path:'/session/333'},
     {text:'session 4',path:'/session/444'},
   ];

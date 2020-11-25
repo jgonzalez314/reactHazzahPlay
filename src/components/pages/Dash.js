@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import HeroSection from '../HeroSection';
-import Dashbar from '../Dashbar';
 import { useAuth } from "../../contexts/AuthContext";
-import Cards from '../Cards';
-import NavBar from '../Navbar'
+// import Cards from '../Cards'
+import { Card, CardDeck } from 'react-bootstrap';
+import { Link, useHistory } from "react-router-dom"
+import { firestore } from "../../firebase"
 
 function Dash({match}) {
-    const {getCurrentUser} = useAuth();
-    const name = getCurrentUser
-    console.log(getCurrentUser);
-    console.log(name);
-
+  
   return (
     <>
-        {/* <NavBar /> */}
-        <HeroSection style="background-image=learning.jpg"text="Welcome"/>
-        <Cards />
+        <HeroSection style="background-image=learning.jpg" text="Sessions"/>
+        <Card />
     </>
   );
 }

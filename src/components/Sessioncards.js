@@ -4,10 +4,10 @@ import CardItem from './CardItem';
 
 const Sessioncards = () => {
   const cardinfo = [
-    {text:'session 1',path:'/studentsession/222'},
+    {text:'session 1',path:'/studentsession/111'},
     {text:'session 2',path:'/studentsession/222'},
-    {text:'session 3',path:'/studentsession/222'},
-    {text:'session 4',path:'/studentsession/222'},
+    {text:'session 3',path:'/studentsession/333'},
+    {text:'session 4',path:'/studentsession/444'},
   ];
 
   const renderCard = (card,index) =>{
