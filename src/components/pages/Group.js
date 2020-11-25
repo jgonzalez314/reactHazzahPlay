@@ -63,7 +63,7 @@ function Group({match}) {
             <ListGroup.Item variant="info">{secondStudent}</ListGroup.Item>
           </ListGroup>
           <ListGroup className="text-center">
-            <ListGroup.Item variant="">{sentence}</ListGroup.Item>
+            <ListGroup.Item variant="warning">{sentence}</ListGroup.Item>
             {storyList.map((story) => (
               <ListGroup.Item variant={story.['fromId'] === uid1 ? "primary" : "info"}>{story.['sentence']}</ListGroup.Item>
             ))}
