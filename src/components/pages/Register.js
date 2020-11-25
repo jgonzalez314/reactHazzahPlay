@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react"
-import '../../App.css';
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import Navbar from '../Navbar';
 
 export default function Signup() {
   const emailRef = useRef()
@@ -35,7 +33,6 @@ export default function Signup() {
 
   return (
     <>
-      {/* <Navbar/> */}
       <Container className="d-flex align-items-center justify-content-center mt-1" >
       <div className="w-100" style={{ maxWidth: "400px" }}>
 

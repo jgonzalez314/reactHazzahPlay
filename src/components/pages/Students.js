@@ -115,7 +115,7 @@ export default function Students() {
                     onHide={handleClose}
                     backdrop="static"
                 >
-                    <Modal.Body closeButton>
+                    <Modal.Body>
                         <Card style={{color: "#1A535C", borderColor:"#1A535C"}}>
                             <Card.Body>
                             <h2 className="text-center mb-4">Input a student information</h2>
@@ -151,14 +151,8 @@ export default function Students() {
                             </Card.Body>
                         </Card>
                     </Modal.Body>
-
                 </Modal>
             </Card>
-            {/* <div className="w-30 text-center mt-3">
-                <Link to="/addstudent" className="btn btn-primary" style={{backgroundColor: "#FF6B6B", borderColor:"transparent"}}>
-                    Add a student
-                </Link>
-            </div> */}
         </Container>
         </>
     );

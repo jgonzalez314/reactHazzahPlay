@@ -15,7 +15,7 @@ export default function NavBar() {
   return (
     <>
     <Navbar style={navbar} expand="lg">
-      <Navbar.Brand style={{ color: "white"}} href={!currentUser ? "/" : "/dash"}> HuzzahPlay </Navbar.Brand>
+      <Navbar.Brand style={{ color: "white"}} href={!currentUser ? "/" : "/session"}> HuzzahPlay </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
         {!currentUser ? 
@@ -23,7 +23,7 @@ export default function NavBar() {
         :
         <>
         <Nav className="mr-auto">
-          <Nav.Link style={{color: "white"}} href="/dash">Dashboard</Nav.Link>
+          <Nav.Link style={{color: "white"}} href="/session">Session</Nav.Link>
           <Nav.Link style={{color: "white"}} href="/students">Students</Nav.Link>
         </Nav>
         <Button style={{backgroundColor: "#FF6B6B", borderColor: "transparent"}} onClick={signout} > Sign Out </Button>
