@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Card, Button, Alert, Container, Modal, Form } from "react-bootstrap"
 import HeroSection from '../HeroSection';
-import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { firestore } from "../../firebase"
 import firebase from "firebase/app"

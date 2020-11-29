@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import '../../App.css';
 import { Form, Button, Card, Alert, Container } from "react-bootstrap"
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth, googleSignIn } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function SignIn() {
@@ -18,7 +18,20 @@ export default function SignIn() {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/dash/hello")
+            history.push("/")
+        } catch {
+            setError("Failed to log in")
+        }
+        setLoading(false)
+    }
+
+    async function googleButton(e) {
+        e.preventDefault()
+        try {
+            setError("")
+            setLoading(true)
+            await googleSignIn()
+            history.push("/")
         } catch {
             setError("Failed to log in")
         }
@@ -45,13 +58,21 @@ export default function SignIn() {
                     <Button style={{backgroundColor: "#FF6B6B", borderColor: "transparent"}} disabled={loading} className="w-100" type="submit">
                     Log In
                     </Button>
+                    
                 </Form>
-                <div className="w-100 text-center mt-3">
+                <div className="w-100 text-center mt-1">
                     <Link to="/forgot-password" style={{color: "black"}}>Forgot Password?</Link>
                 </div>
-                <div className="w-100 text-center mt-2">
+                <div className="w-100 text-center mt-1">
                     Need an account? <Link to="/register" style={{color: "black", fontWeight: "bold"}}>Sign Up</Link>
                 </div>
+                <p className="text-center mt-2">or</p>
+                <Form onSubmit={googleButton}>
+                    <Button style={{ borderColor: "transparent"}} disabled={loading} type="submit" className="w-100 mt-1">
+                        Sign In with Google
+                    </Button>
+                </Form>
+                
                 </Card.Body>
             </Card>
         </div>

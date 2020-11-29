@@ -6,7 +6,6 @@ import { firestore } from "../../firebase"
 
 function ViewSession({match}) {
     const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
     const [group, setGroup] = useState([])
     const [studentList, setStudentList] = useState([])
     const [sessionName, setSessionName] = useState("")
@@ -46,9 +45,7 @@ function ViewSession({match}) {
             setSessionName(doc.data().['name']);
         })
     }
-    function handleBack() {
-        history.push('./');
-    }
+
     useEffect(() => {
         getGroups()
         getStudents();

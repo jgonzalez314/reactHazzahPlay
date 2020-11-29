@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../../App.css';
 import HeroSection from '../HeroSection';
 import { useAuth } from "../../contexts/AuthContext";
-import { Card, Modal, Button, Alert, Container, Form, Row } from 'react-bootstrap';
-import { Link, useHistory } from "react-router-dom"
+import { Card, Modal, Button, Alert, Container, Form } from 'react-bootstrap';
+import {  useHistory } from "react-router-dom"
 import { firestore } from "../../firebase"
 
 export const emailList = new Set();

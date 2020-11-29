@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
-import { AuthProvider, useAuth } from "./contexts/AuthContext"
+import { AuthProvider } from "./contexts/AuthContext"
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import SignIn from './components/pages/SignIn';
@@ -19,7 +19,7 @@ function App() {
     <>
     <AuthProvider>
       <Router>
-      <Navbar />
+        <Navbar />
         <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/sign-in' exact component={SignIn} />

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import { Button } from './Button';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -8,6 +6,7 @@ export default function NavBar() {
 
   const { currentUser, logout } = useAuth();
   const signout = () => {
+    window.alert("Sucessfully Signed Out")
     logout()
   };
 
@@ -23,6 +22,7 @@ export default function NavBar() {
         :
         <>
         <Nav className="mr-auto">
+          <Nav.Link style={{color: "white"}} href="/">Home</Nav.Link>
           <Nav.Link style={{color: "white"}} href="/session">Session</Nav.Link>
           <Nav.Link style={{color: "white"}} href="/students">Students</Nav.Link>
         </Nav>

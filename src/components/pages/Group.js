@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react"
 import HeroSection from '../HeroSection';
-import { Card, Button, Alert, ListGroup, Container } from "react-bootstrap"
+import { ListGroup, Container } from "react-bootstrap"
 import { Link, useLocation } from "react-router-dom"
 import { firestore } from "../../firebase"
 
 
 function Group({match}) {
   const location = useLocation();
-  const [error, setError] = useState("")
-  const [group, setGroup] = useState([])
   const [storyList, setStoryList] = useState([])
   const [sentence, setSentence] = useState("")
   const [firstStudent, setFirstStudent] = useState("")
@@ -42,7 +40,6 @@ function Group({match}) {
   function getGroups() {
     var docname = "session"+match.params.sessionId
     groupRef.doc(docname).get().then(function(doc) {
-      setGroup(doc.data().group[match.params.group]);
       setSentence(doc.data().['sentence']);
     })
   }
