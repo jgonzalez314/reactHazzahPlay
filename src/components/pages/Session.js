@@ -76,10 +76,8 @@ export default function Session() {
     function getSessions() {
         sessions.onSnapshot((querySnapshot) => {
             const items = [];
-            // const created = [];
             querySnapshot.forEach((doc) => {
                 items.push(doc.data());
-                // created.push(doc.get('created'))
         });
         setSessionsList(items);
 

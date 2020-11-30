@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom"
 export default function SignIn() {
     const emailRef = useRef()
     const passwordRef = useRef()
-    const { login } = useAuth()
+    const { login, googleSignIn } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()

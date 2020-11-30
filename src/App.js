@@ -12,11 +12,13 @@ import Group from './components/pages/Group';
 import PrivateRoute from "./components/PrivateRoute"
 import Students from "./components/pages/Students"
 
-
-
 function App() {
+  
   return (
     <>
+    {window.gapi.load("client:auth2", function() {
+      window.gapi.auth2.init({client_id: "318172568934-4s3l6lbqbpk6p93jg7r1jm2uf1491hv1.apps.googleusercontent.com"});
+    })}
     <AuthProvider>
       <Router>
         <Navbar />

@@ -4,13 +4,10 @@ import firebase from "firebase"
 
 const AuthContext = createContext()
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
+googleProvider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
 
 export function useAuth() {
     return useContext(AuthContext)
-}
-
-export function googleSignIn() {
-    return auth.signInWithPopup(googleProvider)
 }
 
 export function AuthProvider({ children }) {
@@ -41,8 +38,11 @@ export function AuthProvider({ children }) {
         return currentUser.updatePassword(password)
     }
 
+    function googleSignIn() {
+        return auth.signInWithPopup(googleProvider).then(function(result) {
+        })
+    }
     
-
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
@@ -54,6 +54,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        googleSignIn,
         login,
         signup,
         logout,

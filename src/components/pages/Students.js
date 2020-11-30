@@ -35,8 +35,49 @@ export default function Students() {
     const { signup } = useAuth();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    var classId = 0
 
+    async function handleAuth() {
+        try {
+            await authenticate().then(loadClient).then(execute).then(getStudentEmail)
+        } catch {
+            
+        }
+    }
+
+    function authenticate() {
+        return window.gapi.auth2.getAuthInstance()
+            .signIn({scope: "https://www.googleapis.com/auth/classroom.courses https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.profile.emails https://www.googleapis.com/auth/classroom.rosters.readonly"})
+            .then(function() { console.log("Sign-in successful"); },
+                function(err) { console.error("Error signing in", err); });
+    }
+
+    function loadClient() {
+        window.gapi.client.setApiKey(process.env.REACT_APP_API_KEY);
+        return window.gapi.client.load("https://classroom.googleapis.com/$discovery/rest?version=v1")
+            .then(function() { console.log("GAPI client loaded for API"); },
+                function(err) { console.error("Error loading GAPI client for API", err); });
+    }
     
+    function execute() {
+        return window.gapi.client.classroom.courses.list()
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                classId = response.result.courses[0].id
+            },
+            function(err) { console.error("Execute error", err); });
+    }
+
+    function getStudentEmail() {
+        return window.gapi.client.classroom.courses.students.list({
+            "courseId": parseInt(classId)
+        })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                firestore.collection("studentList").doc("list").set(response.result);
+            },
+            function(err) { console.error("Execute error", err); });
+    }
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -153,6 +194,7 @@ export default function Students() {
                     </Modal.Body>
                 </Modal>
             </Card>
+            <Button className="mt-2" onClick={handleAuth}>Load Students</Button>
         </Container>
         </>
     );
