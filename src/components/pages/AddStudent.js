@@ -6,7 +6,7 @@ import { emailList } from "./Students"
 import { useAuth } from "../../contexts/AuthContext"
 
 function addstudent(firstname, lastname, email, uid) {
-  const student = firestore.collection("students"); 
+  const student = firestore.collection("students");
   student
       .doc(uid).set({
           'first-name': firstname,
@@ -14,6 +14,7 @@ function addstudent(firstname, lastname, email, uid) {
           'email': email,
           'uid': uid
       })
+  var newCityRef = firestore.collection("cities").doc();
 }
 
 export default function AddStudent() {
@@ -33,10 +34,10 @@ export default function AddStudent() {
     try {
       setError("")
       setLoading(true)
-      await signup(emailRef.current.value, codeRef.current.value).then(data => {  
+      await signup(emailRef.current.value, codeRef.current.value).then(data => {
         addstudent(firstNameRef.current.value, lastNameRef.current.value, emailRef.current.value, data.user.uid)
       })
-      
+
       history.push("/students")
     } catch {
       setError("Failed to create an account")
